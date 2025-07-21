@@ -1,0 +1,32 @@
+stages:
+  - install
+  - test
+  - deploy
+
+# Install dependencies
+install:
+  stage: install
+  image: node:18
+  script:
+    - npm install
+  artifacts:
+    paths:
+      - node_modules/
+
+# Run tests
+test:
+  stage: test
+  image: node:18
+  script:
+    - npm test
+  only:
+    - main
+
+# Fake Deploy step (replace with real command)
+deploy:
+  stage: deploy
+  image: node:18
+  script:
+    - echo "Deploy step: simulate deployment"
+  only:
+    - main
